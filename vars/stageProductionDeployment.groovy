@@ -3,11 +3,10 @@ import com.sap.piper.ConfigurationLoader
 import com.sap.cloud.sdk.s4hana.pipeline.EndToEndTestType
 import com.sap.cloud.sdk.s4hana.pipeline.BuildToolEnvironment
 
-//todo jus testing
 def call(Map parameters = [:]) {
     def stageName = 'productionDeployment'
     def script = parameters.script
-    
+
     println('dbg>> just testing')
 
     def commonPipelineEnvironment = script.commonPipelineEnvironment
@@ -40,7 +39,7 @@ def call(Map parameters = [:]) {
             if(stageConfiguration.cfTargets || stageConfiguration.neoTargets){
                 if (fileExists('package.json') && stageConfiguration.appUrls) {
                     try {
-                        deployToCloudPlatform(
+                        multicloudDeploy(
                             script: script,
                             cfTargets: stageConfiguration.cfTargets,
                             neoTargets: stageConfiguration.neoTargets,

@@ -19,6 +19,7 @@ void call(parameters) {
             stage('Build and Test') {
                 steps {
                     milestone 20
+                    echo "[FW] before entering piperPipelineStageBuild: ON_K8S: ${env.ON_K8S}"
                     piperPipelineStageBuild script: parameters.script
                 }
             }
